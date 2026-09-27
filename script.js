@@ -99,6 +99,7 @@
   const progressLabel = document.getElementById("progress-label");
   const progressBar = document.getElementById("progress");
 
+  const resultCard = document.getElementById("result-card");
   const resultTagline = document.getElementById("result-tagline");
   const resultName = document.getElementById("result-name");
   const resultDesc = document.getElementById("result-desc");
@@ -195,6 +196,7 @@
     const typeKey = computeResultType();
     const type = TYPES[typeKey];
 
+    resultCard.dataset.type = typeKey;
     resultTagline.textContent = type.tagline;
     resultName.textContent = type.name;
     resultDesc.textContent = type.desc;

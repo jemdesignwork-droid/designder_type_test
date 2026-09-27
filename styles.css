@@ -1,21 +1,28 @@
 /* ==========================================================================
-   Designer Type Test — Headspace 디자인 토큰 기반 스타일
+   Designer Type Test — Neo-Brutalism 스타일
+   두꺼운 검정 윤곽선 + 플랫 컬러 + 하드 오프셋 섀도우
    ========================================================================== */
 
 :root {
-  /* --- Headspace DESIGN.md 색상 토큰 --- */
-  --color-primary: #0000ee;
-  --color-primary-active: #0000c4;
-  --color-on-primary: #ffffff;
-  --color-bg: #ffffff;
-  --color-surface: #2d2c2b;
-  --color-text: #4b4c4d;
-  --color-text-muted: #6a6b6c;
-  --color-accent: #0061ef;
-  --color-border: rgba(75, 76, 77, 0.14);
-  --color-border-strong: rgba(75, 76, 77, 0.28);
-  --color-surface-tint: rgba(45, 44, 43, 0.04);
-  --color-primary-tint: rgba(0, 0, 238, 0.06);
+  /* --- 색상 토큰 --- */
+  --ink: #111111;
+  --bg: #fff8e7;
+  --surface: #ffffff;
+
+  --blue: #3355ff;
+  --blue-active: #2340e0;
+  --yellow: #ffd400;
+  --yellow-tint: #fff2b8;
+
+  --orange: #ff6b35;
+  --orange-tint: #ffe4d6;
+  --teal: #00c2a8;
+  --teal-tint: #d6f7f1;
+  --pink: #ff3ea5;
+  --pink-tint: #ffe0f0;
+
+  --text: #111111;
+  --text-muted: #4a4a4a;
 
   /* --- 4px 간격 스케일 --- */
   --space-1: 4px;
@@ -29,10 +36,17 @@
   --space-12: 48px;
   --space-16: 64px;
 
-  /* --- 모양 스케일 (all-soft) --- */
-  --radius-card: 24px;
-  --radius-option: 16px;
+  /* --- 모양 스케일 --- */
+  --radius-card: 20px;
+  --radius-option: 14px;
   --radius-pill: 999px;
+
+  /* --- 두께 / 그림자 (브루탈리즘 시그니처) --- */
+  --border-width: 3px;
+  --shadow-offset-lg: 8px;
+  --shadow-offset-sm: 4px;
+  --shadow-lg: var(--shadow-offset-lg) var(--shadow-offset-lg) 0 var(--ink);
+  --shadow-sm: var(--shadow-offset-sm) var(--shadow-offset-sm) 0 var(--ink);
 
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
     "Segoe UI", Roboto, sans-serif;
@@ -53,8 +67,8 @@ body {
 body {
   margin: 0;
   font-family: var(--font-sans);
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--text);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -87,7 +101,7 @@ button {
   max-width: 420px;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-5);
+  gap: var(--space-6);
 }
 
 .screen.active {
@@ -112,8 +126,8 @@ button {
 
 .card {
   width: 100%;
-  background: var(--color-bg);
-  border: 1px solid var(--color-border);
+  background: var(--surface);
+  border: var(--border-width) solid var(--ink);
   border-radius: var(--radius-card);
   padding: var(--space-10) var(--space-8);
   display: flex;
@@ -121,7 +135,7 @@ button {
   align-items: center;
   text-align: center;
   gap: var(--space-4);
-  box-shadow: 0 1px 2px rgba(45, 44, 43, 0.04), 0 12px 32px -16px rgba(45, 44, 43, 0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 /* --------------------------------------------------------------------
@@ -130,24 +144,25 @@ button {
 
 .eyebrow {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.14em;
-  color: var(--color-primary);
+  color: var(--blue);
   text-transform: uppercase;
 }
 
 .start-card h1 {
   font-size: 30px;
   line-height: 1.3;
-  font-weight: 700;
+  font-weight: 900;
   letter-spacing: -0.01em;
-  color: var(--color-surface);
+  color: var(--text);
 }
 
 .subtext {
   font-size: 16px;
   line-height: 1.6;
-  color: var(--color-text-muted);
+  font-weight: 500;
+  color: var(--text-muted);
   max-width: 32ch;
 }
 
@@ -156,15 +171,18 @@ button {
   align-items: center;
   gap: var(--space-1);
   font-size: 14px;
-  color: var(--color-primary);
-  background: var(--color-primary-tint);
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 2px solid var(--ink);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   margin-top: var(--space-1);
+  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .icon-clock {
-  color: var(--color-primary);
+  color: var(--ink);
 }
 
 /* --------------------------------------------------------------------
@@ -173,38 +191,39 @@ button {
 
 .btn {
   appearance: none;
-  border: none;
+  border: var(--border-width) solid var(--ink);
   cursor: pointer;
   border-radius: var(--radius-pill);
-  font-weight: 600;
-  transition: transform 0.15s var(--ease-standard), box-shadow 0.15s var(--ease-standard),
-    background-color 0.15s var(--ease-standard), opacity 0.15s ease;
+  font-weight: 800;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.12s var(--ease-standard), box-shadow 0.12s var(--ease-standard),
+    background-color 0.12s var(--ease-standard), opacity 0.15s ease;
 }
 
 .btn:active {
-  transform: scale(0.97);
+  transform: translate(var(--shadow-offset-sm), var(--shadow-offset-sm));
+  box-shadow: 0 0 0 var(--ink);
 }
 
 .btn-primary {
   width: 100%;
   padding: var(--space-4) var(--space-6);
   font-size: 16px;
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  background: var(--blue);
+  color: #ffffff;
   margin-top: var(--space-2);
 }
 
 .btn-primary:hover {
-  background: var(--color-primary-active);
+  background: var(--blue-active);
 }
 
 .btn-outline {
   width: 100%;
   padding: var(--space-4) var(--space-6);
   font-size: 16px;
-  background: transparent;
-  color: var(--color-primary);
-  border: 1.5px solid var(--color-primary);
+  background: var(--surface);
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -212,21 +231,28 @@ button {
 }
 
 .btn-outline:hover {
-  background: var(--color-primary-tint);
+  background: var(--yellow-tint);
 }
 
 .btn-text {
   background: none;
+  border: none;
+  box-shadow: none;
   padding: var(--space-2) var(--space-3);
   font-size: 14px;
-  color: var(--color-text-muted);
+  font-weight: 700;
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
 }
 
+.btn-text:active {
+  transform: none;
+}
+
 .btn-text:hover {
-  color: var(--color-text);
+  color: var(--blue);
 }
 
 .btn-text:disabled {
@@ -247,24 +273,24 @@ button {
 
 .progress-track {
   flex: 1;
-  height: 6px;
+  height: 12px;
   border-radius: var(--radius-pill);
-  background: var(--color-surface-tint);
+  background: var(--surface);
+  border: 2px solid var(--ink);
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
   width: 20%;
-  border-radius: var(--radius-pill);
-  background: var(--color-primary);
+  background: var(--blue);
   transition: width 0.4s var(--ease-standard);
 }
 
 .progress-label {
   font-size: 13px;
-  font-weight: 600;
-  color: var(--color-text-muted);
+  font-weight: 800;
+  color: var(--ink);
   min-width: 3ch;
   text-align: right;
 }
@@ -284,8 +310,8 @@ button {
 #question-text {
   font-size: 20px;
   line-height: 1.45;
-  font-weight: 700;
-  color: var(--color-surface);
+  font-weight: 800;
+  color: var(--text);
   text-align: center;
 }
 
@@ -301,28 +327,28 @@ button {
   text-align: left;
   padding: var(--space-4) var(--space-5);
   border-radius: var(--radius-option);
-  border: 1.5px solid var(--color-border-strong);
-  background: var(--color-bg);
-  color: var(--color-text);
+  border: var(--border-width) solid var(--ink);
+  background: var(--surface);
+  color: var(--text);
   font-size: 15px;
+  font-weight: 600;
   line-height: 1.5;
   cursor: pointer;
-  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s var(--ease-standard);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.12s ease, transform 0.12s var(--ease-standard), box-shadow 0.12s var(--ease-standard);
 }
 
 .option:hover {
-  border-color: var(--color-primary);
-  background: var(--color-primary-tint);
+  background: var(--yellow-tint);
 }
 
 .option:active {
-  transform: scale(0.98);
+  transform: translate(var(--shadow-offset-sm), var(--shadow-offset-sm));
+  box-shadow: 0 0 0 var(--ink);
 }
 
 .option.is-selected {
-  border-color: var(--color-primary);
-  background: var(--color-primary-tint);
-  color: var(--color-surface);
+  background: var(--yellow);
 }
 
 /* --------------------------------------------------------------------
@@ -337,11 +363,15 @@ button {
   width: min(240px, 100%);
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-option);
+  border: var(--border-width) solid var(--ink);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   margin-bottom: var(--space-2);
+  background: var(--surface);
 }
 
-.result-image img {
+.result-image img,
+.result-image svg {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -350,22 +380,26 @@ button {
 
 .result-tagline {
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-primary);
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-pill);
+  color: var(--ink);
 }
 
 #result-name {
   font-size: 26px;
-  font-weight: 700;
-  color: var(--color-surface);
+  font-weight: 900;
+  color: var(--text);
 }
 
 #result-desc {
   font-size: 15px;
   line-height: 1.65;
-  color: var(--color-text-muted);
+  font-weight: 500;
+  color: var(--text-muted);
   max-width: 34ch;
   margin-bottom: var(--space-2);
 }
@@ -378,6 +412,31 @@ button {
   margin-top: var(--space-2);
 }
 
+/* 유형별 시그니처 컬러 */
+.result-card[data-type="A"] .result-tagline {
+  background: var(--orange-tint);
+  color: #b8410c;
+}
+.result-card[data-type="A"] .result-image {
+  background: var(--orange-tint);
+}
+
+.result-card[data-type="B"] .result-tagline {
+  background: var(--pink-tint);
+  color: #b8106a;
+}
+.result-card[data-type="B"] .result-image {
+  background: var(--pink-tint);
+}
+
+.result-card[data-type="C"] .result-tagline {
+  background: var(--teal-tint);
+  color: #007a68;
+}
+.result-card[data-type="C"] .result-image {
+  background: var(--teal-tint);
+}
+
 /* --------------------------------------------------------------------
    토스트 (공유하기 클릭 피드백)
    -------------------------------------------------------------------- */
@@ -387,12 +446,13 @@ button {
   left: 50%;
   bottom: var(--space-8);
   transform: translate(-50%, 12px);
-  background: var(--color-surface);
-  color: var(--color-on-primary);
+  background: var(--ink);
+  color: #ffffff;
+  border: 2px solid var(--ink);
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-pill);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -412,7 +472,6 @@ button {
 @media (max-width: 420px) {
   .card {
     padding: var(--space-8) var(--space-5);
-    border-radius: var(--space-5);
   }
 
   .start-card h1 {
