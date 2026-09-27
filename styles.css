@@ -156,15 +156,15 @@ button {
   align-items: center;
   gap: var(--space-1);
   font-size: 14px;
-  color: var(--color-text-muted);
-  background: var(--color-surface-tint);
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   margin-top: var(--space-1);
 }
 
 .icon-clock {
-  color: var(--color-text-muted);
+  color: var(--color-primary);
 }
 
 /* --------------------------------------------------------------------
