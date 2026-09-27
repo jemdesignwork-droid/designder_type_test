@@ -48,17 +48,20 @@
     A: {
       tagline: "The Architect",
       name: "구조형 설계자",
-      desc: "복잡한 문제를 논리적 구조로 정리하는 걸 즐기는 당신. 정보 구조와 시스템, 일관성에서 강점을 발휘해요.",
+      desc: "복잡한 문제를 논리적 구조로 정리하는 걸 즐기는 당신! 정보 구조와 시스템, 일관성에서 강점을 발휘해요.",
+      image: "assets/results/architect.png",
     },
     B: {
       tagline: "The Visualist",
       name: "감각형 비주얼리스트",
       desc: "보는 순간 마음을 움직이는 디자인을 만드는 당신. 색과 타이포, 무드에 예민한 감각을 가졌어요.",
+      image: "assets/results/visualist.png",
     },
     C: {
       tagline: "The Communicator",
       name: "공감형 커뮤니케이터",
       desc: "사용자와 팀 사이를 잇는 다리 역할을 하는 당신. 이야기와 공감으로 디자인을 설득해요.",
+      image: "assets/results/communicator.png",
     },
   };
 
@@ -99,6 +102,7 @@
   const resultTagline = document.getElementById("result-tagline");
   const resultName = document.getElementById("result-name");
   const resultDesc = document.getElementById("result-desc");
+  const resultImage = document.getElementById("result-image-img");
 
   const toast = document.getElementById("toast");
 
@@ -194,6 +198,8 @@
     resultTagline.textContent = type.tagline;
     resultName.textContent = type.name;
     resultDesc.textContent = type.desc;
+    resultImage.src = type.image;
+    resultImage.alt = `${type.name} 일러스트`;
 
     showScreen("result");
   }

@@ -334,23 +334,18 @@ button {
 }
 
 .result-image {
-  width: 96px;
-  height: 96px;
+  width: min(240px, 100%);
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-option);
-  background: var(--color-primary-tint);
-  color: var(--color-primary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-1);
+  overflow: hidden;
   margin-bottom: var(--space-2);
 }
 
-.result-image span {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--color-text-muted);
+.result-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .result-tagline {
